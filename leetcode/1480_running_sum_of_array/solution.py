@@ -1,4 +1,5 @@
 from typing import List
+from itertools import accumulate
 
 
 def runningSum(nums: List[int]) -> List[int]:
@@ -10,3 +11,10 @@ def runningSum(nums: List[int]) -> List[int]:
 
 
 assert runningSum([1, 2, 3, 4]) == [1, 3, 6, 10]
+
+
+def runningSum2(nums: List[int]) -> List[int]:
+    return list(accumulate(nums))
+
+
+assert runningSum2([1, 2, 3, 4]) == [1, 3, 6, 10]
