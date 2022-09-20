@@ -5,7 +5,7 @@ from itertools import cycle
 # mappings. Keeping this for now tho since its an interesting use of cycle.
 
 
-def isIsomorphic(s: str, t: str) -> bool:
+def isIsomorphicFailed(s: str, t: str) -> bool:
     s_list = set(list(s))
     t_list = set(list(t))
 
@@ -18,6 +18,21 @@ def isIsomorphic(s: str, t: str) -> bool:
         return True
 
     return False
+
+
+def isIsomorphic(s: str, t: str) -> bool:
+    mapST, mapTS = {}, {}
+
+    for c1, c2 in zip(s, t):
+
+        if (c1 in mapST and mapST[c1] != c2) or (
+            c2 in mapTS and mapTS[c2] != c1
+        ):
+            return False
+        mapST[c1] = c2
+        mapTS[c2] = c1
+
+    return True
 
 
 assert isIsomorphic("egg", "add") is True
